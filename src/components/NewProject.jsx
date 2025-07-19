@@ -11,13 +11,7 @@ export default function NewProject({submitHandler,...props}) {
 
       const onSubmit = (e) => {
         e.preventDefault();
-        console.log(props.projectNameRef.current.value);
-        console.log(props.projectDescriptionRef.current.value);
-        console.log(props.projectDateRef.current.value);
-        // submitHandler(props.projectNameRef.current.value,props.projectDescriptionRef.current.value,props.projectDateRef.current.value);
-        console.log(submitHandler)
         submitHandler(e);
-        debugger
       }
 
 
