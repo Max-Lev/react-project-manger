@@ -76,7 +76,7 @@ function App() {
     }
     
     // Reset state after submission
-    // setShowAddProject(false);
+    setShowAddProject(false);
     setIsEditMode(false);
     setSelectedProjectData(null);
     setProjectIndex(-1);

@@ -25,7 +25,7 @@ export default function Aside({ children, projects,selectedProject }) {
                       {
                         <button onClick={()=>selectedProject(project,index)}>{
                           project.projectName && project.projectName.length > 0 && (
-                            <span className="pr-4">Name: {project.projectName}</span>
+                            <span className="pr-4">{project.projectName}</span>
                           )}
                         </button>
                       }
