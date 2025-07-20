@@ -11,9 +11,15 @@ function App() {
 
   // Use state instead of ref for projectIndex to trigger re-renders
   const [projectIndex, setProjectIndex] = useState(-1);
-  
+
   // Initialize with empty array instead of array with null object
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState([
+    {
+      projectDate: "2025-07-11",
+      projectDescription: "19",
+      projectName: "React"
+    }
+  ]);
   const [showAddProject, setShowAddProject] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
   const [selectedProjectData, setSelectedProjectData] = useState(null);
@@ -56,7 +62,7 @@ function App() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    
+
     const formData = {
       projectName: projectNameRef.current.value.trim(),
       projectDescription: projectDescriptionRef.current.value.trim(),
@@ -74,7 +80,7 @@ function App() {
     } else {
       addNewProj(formData);
     }
-    
+
     // Reset state after submission
     setShowAddProject(false);
     setIsEditMode(false);
@@ -100,6 +106,12 @@ function App() {
     setSelectedProjectData(project);
     setIsEditMode(true);
     setShowAddProject(true);
+    console.log({
+      'isEditMode':isEditMode,
+     'selectedProjectData': selectedProjectData,
+     'projectIndex: ':projectIndex,
+     'showAddProject':showAddProject
+    })
   };
 
   const cancelHandler = () => {
@@ -109,12 +121,21 @@ function App() {
     setProjectIndex(-1);
   };
 
+  const deleteHandler = () => {
+    setProjects((prev) => prev.filter((_, index) => index !== projectIndex));
+    setShowAddProject(false);
+    setIsEditMode(false);
+    setSelectedProjectData(null);
+    setProjectIndex(-1);
+  }
+
+
   return (
     <>
-      <section className="container flex">
+      <main className="container flex h-screen my-8">
         <Aside projects={projects} selectedProject={selectedProject}>
           <Button onClick={addProjectHandler} type="submit">
-            Add Project
+            + Add Project
           </Button>
         </Aside>
         <div className="content">
@@ -128,10 +149,11 @@ function App() {
               submitHandler={submitHandler}
               cancelHandler={cancelHandler}
               isEditMode={isEditMode}
+              deleteHandler = {deleteHandler}
             />
           )}
         </div>
-      </section>
+      </main>
     </>
   );
 }
