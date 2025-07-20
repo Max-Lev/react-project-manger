@@ -1,8 +1,23 @@
-export default function NoProject() {
-  return<>
-    <div className="flex flex-col w-50 items-center justify-center">
-      <h1>There is no project yet</h1>
-      <img className="w-auto" src="https://cdn-icons-png.flaticon.com/512/414/414825.png" alt="no project" />
+import noProjectImage from '../assets/no-projects.png';
+import Button from './Button.jsx';
+
+export default function NoProject({ addProjectHandler }) {
+  return (
+    <div className="mt-24 text-center w-2/3 items-center justify-center">
+      <img
+        src={noProjectImage}
+        alt="An empty task list"
+        className="w-16 h-16 object-contain mx-auto"
+      />
+      <h2 className="text-xl font-bold text-stone-500 my-4">
+        No Project Selected
+      </h2>
+      <p className="text-stone-400 mb-4">
+        Select a project or get started with a new one
+      </p>
+      <p className="mt-8">
+        <Button type="button" onClick={addProjectHandler}>Create new project</Button>
+      </p>
     </div>
-  </>
+  );
 }

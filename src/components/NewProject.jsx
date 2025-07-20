@@ -1,8 +1,12 @@
 import { useState, useRef, useEffect } from "react";
 import Input from "./Input.jsx";
-export default function NewProject({ submitHandler,
-    cancelHandler,deleteHandler,pls,
-     ...props }) {
+export default function NewProject({
+  submitHandler,
+  cancelHandler,
+  deleteHandler,
+  pls,
+  ...props
+}) {
   const { projectNameRef, projectDescriptionRef, projectDateRef } = props;
 
   useEffect(() => {
@@ -42,7 +46,7 @@ export default function NewProject({ submitHandler,
 
   return (
     <section className="w-[35rem] mt-16 self-center">
-        {pls}
+      {pls}
       <menu className="flex items-center justify-end gap-4 my-4">
         {!props.isEditMode && (
           <>
@@ -68,18 +72,16 @@ export default function NewProject({ submitHandler,
             </li>
           </>
         )}
-        {
-            props.isEditMode &&(
-                <li>
-                <button
-                  onClick={deleteHandler}
-                  className="text-stone-800 hover:text-stone-950"
-                >
-                  Delete
-                </button>
-              </li>
-            )
-        }
+        {props.isEditMode && (
+          <li>
+            <button
+              onClick={deleteHandler}
+              className="text-stone-800 hover:text-stone-950"
+            >
+              Delete
+            </button>
+          </li>
+        )}
       </menu>
       <form onSubmit={onSubmit}>
         <Input

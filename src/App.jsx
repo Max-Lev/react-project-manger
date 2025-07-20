@@ -138,9 +138,8 @@ function App() {
             + Add Project
           </Button>
         </Aside>
-        <div className="content">
-          <h1 className="my-8 text-center text-5xl font-bold">Hello World</h1>
-          {!showAddProject && <NoProject />}
+        <div className="content items-center">
+          {!showAddProject && <NoProject addProjectHandler={addProjectHandler} />}
           {showAddProject && (
             <NewProject
               projectNameRef={projectNameRef}
